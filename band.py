@@ -1,15 +1,20 @@
 from datetime import datetime
 import requests
+import json
 import re
 
+band_path = '/key/band_key.json'
 
 def band_upload(res):
 
     day = ['월','화','수','목','금','토','일']
     
+    with open(band_path, "r") as json_file:
+        json_data = json.dump(json_file)
+
     band_request_url = 'https://openapi.band.us/v2.2/band/post/create'
-    band_token = 'ZQAAATU1n7jDKuaoXbauBvSQ9jJNOSII54p_R1K-YEkUZNNvkQOK67dTcj1U8vNh57G8zQHYpUbjGj3GRTdQspCW0xy2Fp65dWLqzUxxZqDWveXF'
-    band_key = 'AADsgOG4-gZmTHGY0cRQ5764'
+    band_token = json_data['band_token']
+    band_key = json_data['band_key']
     band_contents = ''
 
     try:
@@ -28,6 +33,6 @@ def band_upload(res):
         # 밴드 급식 게시물 업로드
         requests.post(band_request_url, data={'access_token':band_token, 'band_key':band_key, 'content':band_contents,'do_push':True})
 
-        return {'STATUS_CODE': 200}
+        return {'upload_status': '업로드 성공'}
     except:
-        return {'STATUS_CODE': 500}
+        return {'upload_status': '업로드 실패'}
