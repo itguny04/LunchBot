@@ -1,4 +1,4 @@
-LunchBot Application
+LunchBot Application v1.1
 ====================
 
 What is This?
