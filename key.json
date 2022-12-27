@@ -1,0 +1,9 @@
+{
+    "neis":{
+       "KEY":"{YOUR_NEIS_TOKEN}"
+    },
+    "band":{
+       "token":"{YOUR_BAND_TOKEN}",
+       "key":"{YOUR_BAND_KEY}"
+    }
+ }
